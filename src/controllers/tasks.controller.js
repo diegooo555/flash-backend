@@ -22,7 +22,7 @@ export const createTask = async (req, res) => {
             dateStart: dateStart,
             dateEnd: dateEnd,
             color:  color,
-            user: req.user.id,
+            user: "66c13b8115362954b62acd6e",
         });
     
         const saveTask = await newTask.save();
