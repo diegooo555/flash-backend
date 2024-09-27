@@ -32,6 +32,25 @@ export const createTask = async (req, res) => {
     }
 };
 
+export const createTasks = async (req, res) => {
+    try {
+        const {tasks} = req.body;
+        console.log(tasks);
+
+        const tasksWithUser = tasks.map( task => ({
+            ...task,
+            user: "66c13b8115362954b62acd6e",
+        }));
+    
+        const savedTasks = await Task.insertMany(tasksWithUser);
+    
+        res.json(savedTasks);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: "Error al crear tareas"});
+    }
+}
+
 export const getTask = async (req, res) => {
     try {
         const task = await Task.findById(req.params.id).populate('user');
