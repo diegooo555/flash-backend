@@ -12,14 +12,7 @@ const app = express();
 config();
 
 app.use(cors({
-    origin: (origin, callback) => {
-        const allowedOrigin = process.env.FRONTEND_URL; // Dominio principal
-        if (!origin || origin === allowedOrigin || origin.endsWith(`.${allowedOrigin}`)) {
-            callback(null, true); // Permitir
-        } else {
-            callback(new Error('Not allowed by CORS')); // Bloquear
-        }
-    },
+    origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
 
