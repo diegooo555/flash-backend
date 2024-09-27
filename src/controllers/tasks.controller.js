@@ -4,7 +4,7 @@ import Task from '../models/task.model.js';
 export const getTasks = async (req, res) => {
     try {
         const tasks = await Task.find({
-            user: "66c13b8115362954b62acd6e",
+            user: req.user.id,
         }).populate('user');
         res.json(tasks);
     } catch (error) {
@@ -22,7 +22,7 @@ export const createTask = async (req, res) => {
             dateStart: dateStart,
             dateEnd: dateEnd,
             color:  color,
-            user: "66c13b8115362954b62acd6e",
+            user: req.user.id,
         });
     
         const saveTask = await newTask.save();
@@ -39,7 +39,7 @@ export const createTasks = async (req, res) => {
 
         const tasksWithUser = tasks.map( task => ({
             ...task,
-            user: "66c13b8115362954b62acd6e",
+            user: req.user.id,
         }));
     
         const savedTasks = await Task.insertMany(tasksWithUser);
