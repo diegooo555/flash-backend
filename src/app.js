@@ -12,15 +12,7 @@ const app = express();
 config();
 
 app.use(cors({
-    origin: (origin, callback) => {
-        const allowedOrigin = process.env.FRONTEND_URL; // Dominio principal
-        if (!origin || origin === allowedOrigin || origin.endsWith(`.${allowedOrigin}`)) {
-            // Permitir el origen si es igual al dominio principal o un subdominio
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: '*',
     credentials: true,
 }));
 
