@@ -32,7 +32,6 @@ export const register = async (req, res) => {
         const token = await createAccesToken({id: userSaved._id});
         res.cookie('token', token, {
             httpOnly: true,
-            expires: new Date(Date.now() + 900000),
             secure: true,
             sameSite: 'None',
             priority: 'high'
@@ -67,7 +66,6 @@ export const login = async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            expires: new Date(Date.now() + 900000),
             secure: true,
             sameSite: 'None',
             priority: 'high'
