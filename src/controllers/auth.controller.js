@@ -34,7 +34,7 @@ export const register = async (req, res) => {
             httpOnly: true,
             expires: new Date(Date.now() + 900000),
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'None',
             priority: 'high'
         });
         res.json({
@@ -69,7 +69,7 @@ export const login = async (req, res) => {
             httpOnly: true,
             expires: new Date(Date.now() + 900000),
             secure: true,
-            sameSite: 'strict',
+            sameSite: 'None',
             priority: 'high'
         });
         res.json({
