@@ -11,14 +11,15 @@ const app = express();
 
 config();
 
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(cookieParser());
+
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
 
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(cookieParser());
 app.use(userRoutes);
 app.use(taskRoutes);
 
